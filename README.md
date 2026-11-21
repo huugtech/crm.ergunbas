@@ -1,19 +1,22 @@
-# ERGUNBAS Group — GitHub Pages yayın paketi
+# ERGÜNBAŞ CRM — GitHub Pages
 
-Bu klasör, sağlanan `index.html` dosyasını değiştirmeden GitHub Pages üzerinden yayımlamak içindir.
+**Bu klasördeki `index.html` dosyası GitHub'a yüklenecek dosyadır.** GitHub Pages yalnızca kullanıcıyı güncel Apps Script CRM paneline yönlendirir; burada müşteri bilgileri veya gizli anahtar bulunmaz.
 
-## Yayımlama
+## GitHub üzerinde güncelleme
 
-1. GitHub'da yeni bir depo (repository) oluşturun.
-2. `index.html` ve `.nojekyll` dosyalarını **deponun ana dizinine** yükleyin (ZIP dosyasını doğrudan yüklemeyin; önce açın).
-3. Depoda **Settings → Pages → Build and deployment** bölümünü açın.
-4. **Source: Deploy from a branch**, **Branch: main**, **Folder: /(root)** seçin ve **Save** butonuna tıklayın.
-5. GitHub Pages bölümünde yayın bağlantısı görüntülenecektir. Tipik adres: `https://KULLANICI-ADI.github.io/DEPO-ADI/`.
+1. GitHub hesabına giriş yap ve CRM web sayfanın bulunduğu depoyu (repository) aç.
+2. **Code → Add file → Upload files** seç.
+3. Bu klasördeki **`index.html`** dosyasını deponun **ana dizinine** yükle. Mevcut `index.html` varsa bununla değiştir.
+4. Altta **Commit changes** diyerek kaydet.
+5. GitHub Pages henüz açık değilse: **Settings → Pages → Build and deployment → Deploy from a branch → main → /(root) → Save**.
+6. GitHub Pages bağlantını aç: otomatik olarak Apps Script'teki **güncel CRM** ekranına yönleneceksin.
 
-## Önemli: Veri bağlantıları ve güvenlik
+> Ana uygulamanın kendisi `Code.gs` ve `Index.html` ile Google Apps Script'te kalır. **Code.gs** dosyasını GitHub'a yükleme: özel erişim anahtarı içeriyor olabilir.
 
-- HTML içinde Google Sheets kimliği ve dış bağlantılar vardır. GitHub Pages'te yayınlanan HTML kodu **herkese açıktır**.
-- Google Apps Script `Code.gs` sunucu kodu bu pakete dahil değildir: yüklenen dosyada yoktur. CRM senkronizasyonu, WhatsApp kayıtları, telefon düzeltmeleri ve tüm kullanıcılarda ortak ayarlar, mevcut **Apps Script web uygulamasının** doğru yapılandırılmış ve erişilebilir olmasına bağlıdır.
-- **API erişim anahtarını bu HTML dosyasına, GitHub deposuna veya README'ye yazmayın.** Panel bu anahtarı kullanıcıdan alıp tarayıcı oturumunda tutuyor; statik barındırma tek başına kullanıcı yetkilendirmesi sağlamaz.
-- Bu panel müşteri verileri işlediği için, erişim denetimi ve sunucu tarafı izinleri doğrulanmadan herkese açık yayımlanması önerilmez. GitHub Pages özel bir yönetim paneli için erişim kontrollü barındırma sağlamaz.
-- Google Fonts ve favicon internet bağlantısına ihtiyaç duyar.
+## Bir sonraki sürümde sıralama
+
+1. Apps Script'teki `Code.gs` ve `Index.html` güncelle.
+2. Apps Script'te **Yeni sürüm → Yeniden dağıt**.
+3. `/exec` bağlantısı değiştiyse GitHub `index.html` içindeki bağlantıyı güncelle ve GitHub'a tekrar yükle. Aynı dağıtım güncellendiyse Github tarafını tekrar yayımlaman gerekmez.
+
+> GitHub Pages ve Apps Script herkese açık ise, site bağlantısını bilenler CRM uygulamasına erişebilir. Gerçek kimlik doğrulama ve yetkilendirme ayrıca gereklidir.
